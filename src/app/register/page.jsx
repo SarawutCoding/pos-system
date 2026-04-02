@@ -22,9 +22,20 @@ const RegisterPage = () => {
             alert("ข้อมูลไม่ครบถ้วน กรุณากรอกให้ครบ")
             return
         }
-        
-        
+        try {
+          const res = await fetch('http://localhost:3000/api/register', {
+            method: "POST",
+            headers: {"Content-Type":"appication/json"},
+            body: JSON.stringify({ userName, email, password })
+          })
+          if (res.ok) {
+            console.log("สมัครเสร็จสิ้น");
+          }
+        } catch (error) {
+          console.log(error);
+        }
     }
+
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gray-50 flex items-center justify-center p-6">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
