@@ -22,7 +22,7 @@ const RegisterPage = () => {
             alert("ข้อมูลไม่ครบถ้วน กรุณากรอกให้ครบ")
             return
         }
-        console.log(userName , email , password, confirmPassword);
+        
         
     }
   return (
