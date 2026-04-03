@@ -7,6 +7,7 @@ import bcrypt from "bcryptjs";
 export async function POST(res) {
     const { userName, email, password } = await res.json();
     const hashPassword = await bcrypt.hash(password, 10);
-    
+    await connectMongo();
+    await User.create({ userName, email, password:hashPassword });
     return NextResponse.json({ message: "API OK" } , { status: 200 })
 }

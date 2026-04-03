@@ -28,8 +28,10 @@ const RegisterPage = () => {
             headers: {"Content-Type":"appication/json"},
             body: JSON.stringify({ userName, email, password })
           })
+
+          const data = await res.json();
           if (res.ok) {
-            console.log("สมัครเสร็จสิ้น");
+            console.log(data.message);
           }
         } catch (error) {
           console.log(error);
