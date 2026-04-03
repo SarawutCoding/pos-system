@@ -1,5 +1,6 @@
 "use client";
 import React , { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 const RegisterPage = () => {
@@ -7,6 +8,7 @@ const RegisterPage = () => {
     const [email , setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const route = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,9 +31,8 @@ const RegisterPage = () => {
             body: JSON.stringify({ userName, email, password })
           })
 
-          const data = await res.json();
           if (res.ok) {
-            console.log(data.message);
+            route.push("/");
           }
         } catch (error) {
           console.log(error);
