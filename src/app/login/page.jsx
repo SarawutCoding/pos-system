@@ -67,12 +67,6 @@ const LoginPage = () => {
             >
               เข้าสู่ระบบ
             </button>
-            <Link 
-              href="/" 
-              className="w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-semibold py-3 rounded-xl text-center transition-all"
-            >
-              ยกเลิก
-            </Link>
           </div>
         </form>
 
