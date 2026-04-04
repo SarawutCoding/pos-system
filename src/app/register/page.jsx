@@ -1,6 +1,7 @@
 "use client";
-import React , { useState } from 'react'
+import React , { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react';
 import Link from 'next/link'
 
 const RegisterPage = () => {
@@ -9,6 +10,10 @@ const RegisterPage = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const route = useRouter();
+    const { data: session } = useSession();
+    useEffect(() => {
+        if (!session) route.replace("/login");
+    }, [session, route]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
