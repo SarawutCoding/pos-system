@@ -10,6 +10,10 @@ const RegisterPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!email || !password) {
+            alert("กรอกข้อมูลให้ครบ");
+            return            
+        }
     }
 
   return (
