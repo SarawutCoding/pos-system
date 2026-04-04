@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 const authOption = {
   providers: [
     Github({
-      name: "Credentials",
+      name: "credentials",
       credentials: {},
       async authorize(credentials, req) {
         const user = { id: '1' }

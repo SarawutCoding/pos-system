@@ -2,6 +2,7 @@
 import React , { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react';
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -14,6 +15,8 @@ const LoginPage = () => {
             alert("กรอกข้อมูลให้ครบ");
             return            
         }
+
+        const res = await signIn("")
     }
 
   return (
@@ -66,14 +69,6 @@ const LoginPage = () => {
             </Link>
           </div>
         </form>
-
-        {/* Footer Link */}
-        <div className="mt-8 text-center text-sm text-gray-600">
-          ยังไม่มีบัญชีใช่ไหม?{' '}
-          <Link href="/register" className="text-amber-600 font-bold hover:underline">
-            สมัครสมาชิกที่นี่
-          </Link>
-        </div>
 
       </div>
     </div>
