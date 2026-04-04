@@ -25,3 +25,4 @@ const authOption = {
 
 
 const headler = NextAuth(authOption);
+export { headler as GET, headler as POST }; 

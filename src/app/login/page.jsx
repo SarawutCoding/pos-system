@@ -3,7 +3,7 @@ import React , { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-const RegisterPage = () => {
+const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const route = useRouter();
@@ -80,4 +80,4 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+export default LoginPage
