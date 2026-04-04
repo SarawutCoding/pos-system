@@ -1,22 +1,28 @@
 "use client";
-import React , { useState } from 'react'
+import React , { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const route = useRouter();
+    const { data: session } = useSession();
+    useEffect(() => {
+        if (session) route.replace("/");
+    }, [session, route]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!email || !password) {
-            alert("กรอกข้อมูลให้ครบ");
-            return            
+        
+        const res = await signIn("credentials", { email, password, redirect: false });
+        if (res.error) {
+          return
         }
 
-        const res = await signIn("")
+        route.replace("/")
     }
 
   return (

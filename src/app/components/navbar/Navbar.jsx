@@ -1,3 +1,5 @@
+"use client";
+import { signOut } from 'next-auth/react'
 import React from 'react'
 import Link from 'next/link'
 
@@ -32,17 +34,15 @@ const Navbar = () => {
         {/* Auth Buttons */}
         <div className='flex items-center gap-x-4'>
           <Link 
-            href="/login" 
-            className='px-4 py-2 text-sm font-semibold text-gray-800 hover:bg-amber-500 rounded-lg transition-all'
-          >
-            Login
-          </Link>
-          <Link 
             href="/register" 
             className='px-4 py-2 text-sm font-semibold bg-gray-900 text-white rounded-lg hover:bg-gray-800 shadow-sm transition-all'
           >
             Register
           </Link>
+          <a className='px-4 py-2 text-sm font-semibold bg-red-500 text-white rounded-lg hover:bg-red-400 shadow-sm transition-all'
+           onClick={() => signOut()}>
+            Logout
+          </a>
         </div>
 
       </div>

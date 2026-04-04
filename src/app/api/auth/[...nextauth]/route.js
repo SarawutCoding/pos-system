@@ -1,15 +1,31 @@
 import NextAuth from "next-auth";
-import Github from "next-auth/providers/github";
-import { signIn } from "next-auth/react";
+import Credentials from "next-auth/providers/credentials";
+import { connectMongo } from "../../../../../lib/mongoConnect";
+import User from "../../../../../model/user";
+import bcrypt from "bcryptjs";
 
 const authOption = {
   providers: [
-    Github({
+    Credentials({
       name: "credentials",
       credentials: {},
       async authorize(credentials, req) {
-        const user = { id: '1' }
-        return user
+        const { email, password } = credentials;
+        
+        await connectMongo();
+        const user = await User.findOne({ email });
+
+        if (!user) {
+          return null;
+        }
+
+        const checkPassword = await bcrypt.compare(password, user.password);
+        if (!checkPassword) {
+          return null;
+        }
+
+        return user;
+
       }
     })
   ],
@@ -17,7 +33,7 @@ const authOption = {
     stratrty : "jwt"
   },
   secret : process.env.NEXTAUTH_SECRET,
-  page: {
+  pages: {
     signIn: "/login"
   }
 
