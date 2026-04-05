@@ -13,24 +13,6 @@ const Navbar = () => {
           <Link href="/">🛒 POS <span className="text-white">System</span></Link>
         </div>
 
-        {/* Navigation Links */}
-        <div className='hidden md:block'>
-          <ul className='flex gap-x-8 font-medium text-gray-700'>
-            <li>
-              <Link href="/" className='hover:text-white transition-colors'>Home</Link>
-            </li>
-            <li>
-              <Link href="/items" className='hover:text-white transition-colors'>Items</Link>
-            </li>
-            <li>
-              <Link href="/inventory" className='hover:text-white transition-colors'>Inventory</Link>
-            </li>
-            <li>
-              <Link href="/reports" className='hover:text-white transition-colors'>Reports</Link>
-            </li>
-          </ul>
-        </div>
-
         {/* Auth Buttons */}
         <div className='flex items-center gap-x-4'>
           <Link 
@@ -39,10 +21,6 @@ const Navbar = () => {
           >
             Register
           </Link>
-          <a className='px-4 py-2 text-sm font-semibold bg-red-500 text-white rounded-lg hover:bg-red-400 shadow-sm transition-all'
-           onClick={() => signOut()}>
-            Logout
-          </a>
         </div>
 
       </div>

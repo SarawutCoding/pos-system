@@ -23,9 +23,17 @@ export default function Home() {
     return null; 
   }
   return (
-    <div>
-      <Navbar/>
-      <Sidebar/>
+    <div className="flex h-screen overflow-hidden">
+      {/* 1. ฝั่งซ้าย: Sidebar (ความกว้างคงที่) */}
+      <Sidebar />
+
+      {/* 2. ฝั่งขวา: พื้นที่ส่วนที่เหลือทั้งหมด */}
+      <div className="flex flex-col flex-1">
+        {/* Main Content: พื้นที่แสดงเนื้อหาหน้าเว็บ */}
+        <main className="flex-1 overflow-y-auto p-6 bg-slate-50">
+          {/* ตรงนี้คือส่วนที่หน้าต่างๆ จะมาแสดงผล */}
+        </main>
+      </div>
     </div>
   );
 }
