@@ -1,10 +1,25 @@
 import mongoose, { Schema } from "mongoose";
 
 const products = new Schema({
-    name: String,
-    description: String,
-    price: Number,
-    quantity: Number,
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    description: {
+        type: String,
+        trim: true
+    },
+    price: {
+        type: Number,
+        required: true,
+        min: 0
+    },
+    quantity: {
+        type: Number,
+        default: 0,
+        min: 0
+    },
     category_id: {
         type: Schema.Types.ObjectId,
         ref: "category",
@@ -12,8 +27,11 @@ const products = new Schema({
     },
     image_url: {
         type: String,
-        unique: true
+        unique: true,
+        sparse: true
     }
+}, {
+    timestamps: true
 })
 
 const Products = mongoose.models.products || mongoose.model("products", products);
