@@ -85,7 +85,7 @@ const Sidebar = () => {
         </div>
 
         {/* ปุ่ม Logout */}
-        <a className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-colors" onClick={() => signOut()}>
+        <a className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-colors" onClick={() => signOut({ redirect: true, callbackUrl: "/login" })}>
           <LogOut className="w-5 h-5" />
           Logout
         </a>
