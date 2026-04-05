@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const orders = new Schema({
+const ordersModel = new Schema({
     total_price: {
         tyre: Number,
         required: true
@@ -15,5 +15,5 @@ const orders = new Schema({
     timestamps: true
 })
 
-const Orders = mongoose.models.orders || mongoose.model("orders", orders);
+const Orders = mongoose.models.orders || mongoose.model("orders", ordersModel);
 export default Orders;
