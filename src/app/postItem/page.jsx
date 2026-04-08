@@ -9,26 +9,25 @@ const PostItemPasge = () => {
         
         {/* Header */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-gray-800">สร้างบัญชีใหม่</h2>
-          <p className="text-gray-500 mt-2">กรุณากรอกข้อมูลเพื่อลงทะเบียนเข้าใช้งาน</p>
+          <h2 className="text-3xl font-extrabold text-gray-800">เพิ่มสินค้า</h2>
         </div>
 
         {/* Form */}
         <form className="space-y-5">
           {/* Username */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">ProductName</label>
             <input 
               type="text"
               onChange={(e) => {setUserName(e.target.value)}}
-              placeholder="ชื่อผู้ใช้งาน"
+              placeholder="ชื่อสินค้า"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <input 
               type="email"
               onChange={(e) => {setEmail(e.target.value)}}
