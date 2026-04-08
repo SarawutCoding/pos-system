@@ -28,12 +28,10 @@ const PostItemPasge = () => {
           {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-            <input 
-              type="email"
-              onChange={(e) => {setEmail(e.target.value)}}
-              placeholder="example@pos.com"
+            <textarea 
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all"
-            />
+              onChange={(e) => {setEmail(e.target.value)}}
+              placeholder='รายละเอียดสินค้า'></textarea>
           </div>
 
           {/* Password */}
@@ -74,15 +72,6 @@ const PostItemPasge = () => {
             </Link>
           </div>
         </form>
-
-        {/* Footer Link */}
-        <div className="mt-8 text-center text-sm text-gray-600">
-          มีบัญชีอยู่แล้วใช่ไหม?{' '}
-          <Link href="/login" className="text-sky-600 font-bold hover:underline">
-            เข้าสู่ระบบที่นี่
-          </Link>
-        </div>
-
       </div>
     </div>
   )
