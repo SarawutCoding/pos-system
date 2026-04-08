@@ -66,7 +66,7 @@ const PostItemPasge = () => {
           <div className="flex flex-col gap-3 pt-4">
             <button 
               type="submit" 
-              className="w-full bg-sky-400 hover:bg-sky-500 text-gray-900 font-bold py-3 rounded-xl shadow-lg shadow-amber-200 transition-all active:scale-[0.98]"
+              className="w-full bg-sky-400 hover:bg-sky-500 text-gray-900 font-bold py-3 rounded-xl shadow-lg shadow-amber-200 transition-all active:scale-[0.98] cursor-pointer"
             >
               เพิ่มข้อมูล
             </button>
