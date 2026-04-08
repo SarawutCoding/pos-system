@@ -14,7 +14,6 @@ const PostItemPasge = () => {
 
         {/* Form */}
         <form className="space-y-5">
-          {/* Username */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">ProductName</label>
             <input 
@@ -25,7 +24,6 @@ const PostItemPasge = () => {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <textarea 
@@ -34,25 +32,33 @@ const PostItemPasge = () => {
               placeholder='รายละเอียดสินค้า'></textarea>
           </div>
 
-          {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
             <input 
-              type="password"
+              type="number"
               onChange={(e) => {setPassword(e.target.value)}}
-              placeholder="รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)"
+              placeholder="ราคา"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all"
             />
           </div>
 
           {/* Confirm Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
             <input 
-              type="password"
+              type="number"
               onChange={(e) => {setConfirmPassword(e.target.value)}}
-              placeholder="ยืนยันรหัสผ่านอีกครั้ง"
+              placeholder="จำนวน"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Imge</label>
+            <input 
+              type="file"
+              onChange={(e) => {setConfirmPassword(e.target.value)}}
+              className="w-full text-sm text-sky-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-sky-100 file:text-sky-700 hover:file:bg-sky-200 cursor-pointer"
             />
           </div>
 
@@ -62,10 +68,10 @@ const PostItemPasge = () => {
               type="submit" 
               className="w-full bg-sky-400 hover:bg-sky-500 text-gray-900 font-bold py-3 rounded-xl shadow-lg shadow-amber-200 transition-all active:scale-[0.98]"
             >
-              ลงทะเบียน
+              เพิ่มข้อมูล
             </button>
             <Link 
-              href="/" 
+              href="/inventory" 
               className="w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-semibold py-3 rounded-xl text-center transition-all"
             >
               ยกเลิก
