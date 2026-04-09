@@ -9,10 +9,14 @@ const PostItemPasge = () => {
   const [quantity, setQuantity] = useState(0);
   const [fileImge, setFileImge] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(productName, description, price, quantity, fileImge);
-    
+    if (!productName || !description || !price || !quantity || !fileImge) {
+        alert("ข้อมูลไม่ครบ")
+        return
+    }
+
+    const res = await fetch("http://localhost:3000/api/")
 
   }
   return (
