@@ -24,7 +24,6 @@ const PostItemPasge = () => {
 
     const res = await fetch("http://localhost:3000/api/postItem/", {
       method: "POST",
-      headers: {"Content-Type" : "application/json", "Content-Type" : "multipart/form-data"},
       body: formData
     })
 
