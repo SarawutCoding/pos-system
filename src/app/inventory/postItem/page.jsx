@@ -16,11 +16,16 @@ const PostItemPasge = () => {
         return
     }
     const formData = new FormData();
+    formData.append("productName", productName);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("quantity", quantity);
+    formData.append("fileImge", fileImge);
 
     const res = await fetch("http://localhost:3000/api/postItem/", {
       method: "POST",
       headers: {"Content-Type" : "application/json", "Content-Type" : "multipart/form-data"},
-      body: JSON.stringify(productName, description, price, quantity, fileImge)
+      body: formData
     })
 
   }
