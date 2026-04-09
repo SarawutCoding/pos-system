@@ -3,6 +3,11 @@ import React , { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const PostItemPasge = () => {
+  const [productName, setProductName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
+  const [quantity, seyQuantity] = useState(0);
+  const [fileImge, setFileImge] = useState(null);
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gray-50 flex items-center justify-center p-6">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
