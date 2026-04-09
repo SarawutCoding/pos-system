@@ -15,8 +15,13 @@ const PostItemPasge = () => {
         alert("ข้อมูลไม่ครบ")
         return
     }
+    const formData = new FormData();
 
-    const res = await fetch("http://localhost:3000/api/")
+    const res = await fetch("http://localhost:3000/api/postItem/", {
+      method: "POST",
+      headers: {"Content-Type" : "application/json", "Content-Type" : "multipart/form-data"},
+      body: JSON.stringify(productName, description, price, quantity, fileImge)
+    })
 
   }
   return (
