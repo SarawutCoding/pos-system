@@ -3,12 +3,18 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react';
 // นำเข้าไอคอนจาก lucide-react (สวยงามและใช้งานง่าย)
 import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Coffee, UserPlus } from 'lucide-react';
 
 const Sidebar = () => {
   // ดึง Pathname ปัจจุบันมาเพื่อทำ Active Link Highlight
   const pathname = usePathname();
+
+  const { data:session } = useSession();
+  console.log(session);
+  
+  
 
   // กำหนดรายการเมนู เพื่อให้ง่ายต่อการจัดการและวนลูป
   const menuItems = [
@@ -79,7 +85,7 @@ const Sidebar = () => {
             className="w-10 h-10 rounded-full bg-slate-700 border border-slate-600"
           />
           <div>
-            <p className="text-sm font-semibold text-white">Sarah Wilson</p>
+            <p className="text-sm font-semibold text-white">{session.user.username}</p>
             <p className="text-xs text-slate-400">Manager</p>
           </div>
         </div>

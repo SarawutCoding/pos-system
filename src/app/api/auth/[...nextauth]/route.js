@@ -14,7 +14,6 @@ const authOption = {
         
         await connectMongo();
         const user = await User.findOne({ email });
-
         if (!user) {
           return null;
         }
@@ -24,7 +23,7 @@ const authOption = {
           return null;
         }
 
-        return user;
+        return {email: user.email, username: user.username};
 
       }
     })
