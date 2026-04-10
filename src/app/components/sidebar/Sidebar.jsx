@@ -82,7 +82,7 @@ const Sidebar = () => {
             className="w-10 h-10 rounded-full bg-slate-700 border border-slate-600"
           />
           <div>
-            <p className="text-sm font-semibold text-white">{session.user.username}</p>
+            <p className="text-sm font-semibold text-white">{session?.user?.username}</p>
             <p className="text-xs text-slate-400">Manager</p>
           </div>
         </div>
