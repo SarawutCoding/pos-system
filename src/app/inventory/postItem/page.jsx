@@ -1,5 +1,6 @@
 "use client";
 import React , { useState, useEffect } from 'react'
+import { storage, ID } from '../../../../lib/appwriteConnect';
 import Link from 'next/link'
 
 const PostItemPasge = () => {
