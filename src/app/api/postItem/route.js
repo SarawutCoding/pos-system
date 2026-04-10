@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import mongoose from "mongoose";
+import { connectMongo } from "../../../../lib/mongoConnect";
+import Products from "../../../../model/products";
 
 export async function POST(req) {
     const formData = await req.formData();
@@ -7,7 +10,7 @@ export async function POST(req) {
     const price = formData.get("price");
     const quantity = formData.get("quantity");
     const fileImge = formData.get("fileImge");
-    console.log(productName, description, price, quantity, fileImge);
+    
     
     return NextResponse.json({message: "OK"}, { status: 200 });
 }
