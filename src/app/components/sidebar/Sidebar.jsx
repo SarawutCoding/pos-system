@@ -12,9 +12,6 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   const { data:session } = useSession();
-  console.log(session);
-  
-  
 
   // กำหนดรายการเมนู เพื่อให้ง่ายต่อการจัดการและวนลูป
   const menuItems = [
