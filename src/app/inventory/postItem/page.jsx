@@ -93,15 +93,13 @@ const PostItemPasge = () => {
           </div>
           <label>Choose a car:</label>
           <select className="border p-2 rounded">
-            <option value="">กรุณาเลือกยี่ห้อรถ</option>
+            <option value="">เลือกหมวดหมู่</option>
             <option value="volvo">Volvo</option>
             <option value="saab">Saab</option>
             <option value="fiat">Fiat</option>
             <option value="audi">Audi</option>
-            <option value="add-new" className="text-blue-500 font-bold">
-              + เพิ่มข้อมูลใหม่...
-            </option>
           </select>
+          <button className='border p-2 rounded bg-sky-400 cursor-pointer'>+ เพิ่มหมวดหมู่</button>
 
           {/* Buttons */}
           <div className="flex flex-col gap-3 pt-4">
