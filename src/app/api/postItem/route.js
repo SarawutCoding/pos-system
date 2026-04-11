@@ -11,9 +11,7 @@ export async function POST(req) {
     const price = formData.get("price");
     const quantity = formData.get("quantity");
     const fileID = formData.get("fileID");
-    console.log(productName, description, price, quantity, fileID);
     
-    
-    
+    const resAppWrite = await storage.createFile()
     return NextResponse.json({message: "OK"}, { status: 200 });
 }
