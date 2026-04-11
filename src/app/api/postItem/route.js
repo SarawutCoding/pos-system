@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { connectMongo } from "../../../../lib/mongoConnect";
 import Products from "../../../../model/products";
+import { storage, ID } from "../../../../lib/appwriteConnect";
 
 export async function POST(req) {
     const formData = await req.formData();
