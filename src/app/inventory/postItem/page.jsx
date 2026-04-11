@@ -28,6 +28,10 @@ const PostItemPasge = () => {
       body: formData
     })
 
+    if (res.ok) {
+      alert("บันทึกเสร็จสิ้น")
+    }
+
   }
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gray-50 flex items-center justify-center p-6">

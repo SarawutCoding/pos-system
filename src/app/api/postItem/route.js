@@ -10,8 +10,12 @@ export async function POST(req) {
     const description = formData.get("description");
     const price = formData.get("price");
     const quantity = formData.get("quantity");
-    const fileID = formData.get("fileID");
+    const fileImge = formData.get("fileImge");
     
-    const resAppWrite = await storage.createFile()
+    const resAppWrite = await storage.createFile(process.env.BUSKET_ID, ID.unique(), fileImge);
+    const fileID = resAppWrite.$id;
+    
+    
+    
     return NextResponse.json({message: "OK"}, { status: 200 });
 }
