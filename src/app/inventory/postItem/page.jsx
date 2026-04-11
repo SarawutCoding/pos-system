@@ -16,12 +16,15 @@ const PostItemPasge = () => {
         alert("ข้อมูลไม่ครบ")
         return
     }
+    const resAppWrite = await storage.createFile(process.env.BUSKET_ID, ID.unique(), fileImge);
+
+    const fileID = resAppWrite.$id;
     const formData = new FormData();
     formData.append("productName", productName);
     formData.append("description", description);
     formData.append("price", price);
     formData.append("quantity", quantity);
-    formData.append("fileImge", fileImge);
+    formData.append("fileID", fileID);
 
     const res = await fetch("http://localhost:3000/api/postItem/", {
       method: "POST",
