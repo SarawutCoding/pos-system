@@ -126,7 +126,7 @@ const PostItemPasge = () => {
         </form>
 
         {modal && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/">
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
               
               <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
                 <h2 className="text-xl font-bold mb-4">เพิ่มหมวดหมู่ใหม่</h2>
