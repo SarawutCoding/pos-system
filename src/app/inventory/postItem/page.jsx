@@ -21,6 +21,8 @@ const PostItemPasge = () => {
     if (!categoryName) {
       alert("กรุณากรอกข้อมูล");
     }
+    console.log(categoryName);
+    
   }
 
   const handleSubmit = async (e) => {
