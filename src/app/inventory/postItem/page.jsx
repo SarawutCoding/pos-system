@@ -21,7 +21,7 @@ const PostItemPasge = () => {
     if (!categoryName) {
       alert("กรุณากรอกข้อมูล");
     }
-    console.log(categoryName);
+    const res = await fetch("http://localhost:3000/api");
     
   }
 
