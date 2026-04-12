@@ -24,7 +24,7 @@ const PostItemPasge = () => {
     const res = await fetch("http://localhost:3000/api/postItem/postCategory", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(categoryName)
+      body: JSON.stringify({categoryName})
     });
 
     if (res.ok) {
