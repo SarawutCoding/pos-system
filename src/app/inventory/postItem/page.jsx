@@ -21,7 +21,15 @@ const PostItemPasge = () => {
     if (!categoryName) {
       alert("กรุณากรอกข้อมูล");
     }
-    const res = await fetch("http://localhost:3000/api");
+    const res = await fetch("http://localhost:3000/api/postItem/postCategory", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(categoryName)
+    });
+
+    if (res.ok) {
+      alert("เพิ่มหมวดหมู่แล้ว")
+    }
     
   }
 
