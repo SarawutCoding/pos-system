@@ -15,6 +15,14 @@ const PostItemPasge = () => {
   //categoryName
   const [categoryName, setCategoryName] = useState("");
 
+  //create category
+  const handleSubmitCategory = async (e) => {
+    e.preventDefault()
+    if (!categoryName) {
+      alert("กรุณากรอกข้อมูล");
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!productName || !description || !price || !quantity || !fileImge) {
@@ -131,7 +139,7 @@ const PostItemPasge = () => {
               <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
                 <h2 className="text-xl font-bold mb-4">เพิ่มหมวดหมู่ใหม่</h2>
                 
-                <form>
+                <form onSubmit={handleSubmitCategory}>
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       ชื่อหมวดหมู่
