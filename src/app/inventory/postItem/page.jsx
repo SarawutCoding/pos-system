@@ -33,6 +33,20 @@ const PostItemPasge = () => {
     
   }
 
+  // GET category
+  const [category, setCategory] = useState("");
+  const getCategory = async () => {
+    const res = await fetch("http://localhost:3000/api/postItem/postCategory", {
+      method: "GET",
+      cache: "no-cache"
+    });
+    if (!res.ok) {
+      console.log("Error");
+    }
+    const dataCategorys = await res.json();
+    setCategory(dataCategorys.categorys);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!productName || !description || !price || !quantity || !fileImge) {
