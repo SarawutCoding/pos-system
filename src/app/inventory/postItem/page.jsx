@@ -46,6 +46,9 @@ const PostItemPasge = () => {
     const dataCategorys = await res.json();
     setCategory(dataCategorys.categorys);
   }
+  useEffect(() => {
+    getCategory();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
