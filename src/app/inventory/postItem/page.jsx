@@ -142,7 +142,7 @@ const PostItemPasge = () => {
 
           <div className="flex items-center gap-2 w-full">
             <div className="flex-1">
-              <select onChange={(e) => {setCategoryID(e.target.value)}} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all cursor-pointer bg-white">
+              <select onChange={(e) => {setCategoryID(e.target.value)}} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all cursor-pointer bg-white">
                 <option value="">เลือกหมวดหมู่</option>
                 {category && category.length > 0 && (
                   category.map(val => (
