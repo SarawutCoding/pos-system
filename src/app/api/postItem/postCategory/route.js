@@ -8,3 +8,9 @@ export async function POST(res) {
     await Category.create({ name: categoryName })
     return NextResponse.json({ message: "OK" }, { status: 200 })
 }
+
+export async function GET() {
+    connectMongo();
+    const category = await Category.find({});
+    return NextResponse.json({categorys: category}, { message: "OK" }, { status: 200 })
+}
