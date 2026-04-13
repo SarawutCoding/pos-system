@@ -48,7 +48,7 @@ const PostItemPasge = () => {
   }
   useEffect(() => {
     getCategory();
-  }, []);
+  }, [category]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -132,15 +132,29 @@ const PostItemPasge = () => {
               className="w-full text-sm text-sky-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-sky-100 file:text-sky-700 hover:file:bg-sky-200 cursor-pointer"
             />
           </div>
-          <div>
-            <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all">
-              <option value="">เลือกหมวดหมู่</option>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="fiat">Fiat</option>
-              <option value="audi">Audi</option>
-            </select>
-            <button type='button' onClick={() => setModal(true)} className='border p-2 rounded bg-sky-400 cursor-pointer ml-2'>+ เพิ่มหมวดหมู่</button>
+
+          <div className="flex items-center gap-2 w-full">
+            <div className="flex-1">
+              <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all cursor-pointer bg-white">
+                <option value="">เลือกหมวดหมู่</option>
+                {category && category.length > 0 && (
+                  category.map(val => (
+                    <option key={val._id} value={val._id}>{val.name}</option>
+                  ))
+                )}
+              </select>
+            </div>
+
+            {/* ปุ่มเพิ่มหมวดหมู่ - ปรับให้ขนาดสูงเท่ากับ Select */}
+            <button 
+              type='button' 
+              onClick={() => setModal(true)} 
+              className='px-4 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-medium transition-colors shadow-sm flex items-center justify-center whitespace-nowrap'
+              title="เพิ่มหมวดหมู่"
+            >
+              <span className="text-xl mr-1">+</span>
+              <span>เพิ่ม</span>
+            </button>
           </div>
 
           {/* Buttons */}
