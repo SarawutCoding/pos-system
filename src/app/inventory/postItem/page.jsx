@@ -54,7 +54,7 @@ const PostItemPasge = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!productName || !description || !price || !quantity || !fileImge) {
+    if (!productName || !description || !price || !quantity || !fileImge || !categoryID) {
         alert("ข้อมูลไม่ครบ")
         return
     }
@@ -65,6 +65,7 @@ const PostItemPasge = () => {
     formData.append("price", price);
     formData.append("quantity", quantity);
     formData.append("fileImge", fileImge);
+    formData.append("categoryID", categoryID);
 
     const res = await fetch("http://localhost:3000/api/postItem/", {
       method: "POST",
@@ -137,11 +138,11 @@ const PostItemPasge = () => {
 
           <div className="flex items-center gap-2 w-full">
             <div className="flex-1">
-              <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all cursor-pointer bg-white">
+              <select onChange={(e) => {setCategoryID(e.target.value)}} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all cursor-pointer bg-white">
                 <option value="">เลือกหมวดหมู่</option>
                 {category && category.length > 0 && (
                   category.map(val => (
-                    <option key={val._id} value={val._id} onChange={(e) => {setCategoryID(e.target.value)}}>{val.name}</option>
+                    <option key={val._id} value={val._id}>{val.name}</option>
                   ))
                 )}
               </select>
