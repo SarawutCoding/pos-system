@@ -7,6 +7,7 @@ const PostItemPasge = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
+  const [categoryID, setCategoryID] = useState("");
   const [fileImge, setFileImge] = useState(null);
 
   //Modal 
@@ -140,7 +141,7 @@ const PostItemPasge = () => {
                 <option value="">เลือกหมวดหมู่</option>
                 {category && category.length > 0 && (
                   category.map(val => (
-                    <option key={val._id} value={val._id}>{val.name}</option>
+                    <option key={val._id} value={val._id} onChange={(e) => {setCategoryID(e.target.value)}}>{val.name}</option>
                   ))
                 )}
               </select>
