@@ -48,7 +48,7 @@ const PostItemPasge = () => {
   }
   useEffect(() => {
     getCategory();
-  }, [category]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
