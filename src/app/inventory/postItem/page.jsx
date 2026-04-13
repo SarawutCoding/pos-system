@@ -28,7 +28,8 @@ const PostItemPasge = () => {
     });
 
     if (res.ok) {
-      alert("เพิ่มหมวดหมู่แล้ว")
+      setModal(false)
+      alert("เพิ่มหมวดหมู่แล้ว");
     }
     
   }
