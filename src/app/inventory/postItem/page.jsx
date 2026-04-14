@@ -1,6 +1,7 @@
 "use client";
 import React , { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 
 const PostItemPasge = () => {
   const [productName, setProductName] = useState("");
@@ -9,6 +10,9 @@ const PostItemPasge = () => {
   const [quantity, setQuantity] = useState(0);
   const [categoryID, setCategoryID] = useState("");
   const [fileImge, setFileImge] = useState(null);
+
+  //router
+  const route = useRouter();
 
   //Modal 
   const [modal, setModal] = useState(false);
@@ -74,6 +78,7 @@ const PostItemPasge = () => {
 
     if (res.ok) {
       alert("บันทึกเสร็จสิ้น")
+      route.push("/inventory");
     }
 
   }
