@@ -74,7 +74,7 @@ const InventoryPage = () => {
                       <tr key={val._id} className="hover:bg-gray-50/50 transition-colors">
                         <td className="px-4 py-4">
                           <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-gray-100">
-                            {/* <img src="..." className="object-cover w-full h-full" /> */}
+                            <img src={val.imgUrl} className="object-cover w-full h-full" />
                           </div>
                         </td>
                         <td className="px-4 py-4 text-sm font-medium text-gray-700">{val.name}</td>

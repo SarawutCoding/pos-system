@@ -34,5 +34,15 @@ export async function POST(req) {
 export async function GET() {
     connectMongo();
     const products = await Products.find({}).populate('category_id');;
-    return NextResponse.json({ products },{message: "OK"}, { status: 200 });
+    const productsComplte = await Promise.all(products.map(async (val) => {
+        const imgUrl = await storage.getFileView(
+            process.env.BUSKET_ID,
+            val.image_url
+        );
+
+        return { ...val._doc, imgUrl: imgUrl };
+    }))
+    console.log(productsComplte);
+    
+    return NextResponse.json({ products: productsComplte },{message: "OK"}, { status: 200 });
 }
