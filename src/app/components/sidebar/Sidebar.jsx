@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react';
 // นำเข้าไอคอนจาก lucide-react (สวยงามและใช้งานง่าย)
-import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, TreePalm, UserPlus } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus } from 'lucide-react';
 
 const Sidebar = () => {
   // ดึง Pathname ปัจจุบันมาเพื่อทำ Active Link Highlight
@@ -29,7 +29,7 @@ const Sidebar = () => {
       {/* --- ส่วนหัว: Logo / Name --- */}
       <div className="flex items-center gap-3 px-3 py-4 mb-10 border-b border-slate-700">
         <div className="p-2.5 bg-green-500 rounded-xl shadow-inner">
-          <TreePalm className="w-8 h-8 text-white" strokeWidth={1.5}/>
+          <Sprout className="w-8 h-8 text-white" strokeWidth={1.5}/>
         </div>
         <div>
           <h1 className="text-xl font-bold tracking-tight text-white">POS <span className="text-green-400">System</span></h1>
