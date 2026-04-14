@@ -107,8 +107,10 @@ const InventoryPage = () => {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="100%" className="text-center bg-gray-300 p-3">
-                        You do not any posts yet.
+                      <td colSpan="100%" className="text-center bg-gray-100 p-10">
+                        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]">
+                        </div>
+                        <span className="ml-2 text-blue-600">Loading...</span>
                       </td>
                     </tr>
                   )}
