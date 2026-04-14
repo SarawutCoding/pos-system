@@ -1,15 +1,18 @@
 "use client";
-import React , { useState, useEffect } from 'react'
+import React , { useState, useEffect, use } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 
-const EditItemPasge = () => {
+const EditItemPasge = ({ params }) => {
+  const { id } = use(params);
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [categoryID, setCategoryID] = useState("");
   const [fileImge, setFileImge] = useState(null);
+  console.log(id);
+  
 
   //router
   const route = useRouter();
@@ -42,7 +45,7 @@ const EditItemPasge = () => {
   // GET category
   const [category, setCategory] = useState("");
   const getCategory = async () => {
-    const res = await fetch("http://localhost:3000/api/postItem/postCategory", {
+    const res = await fetch(`http://localhost:3000/api/postItem/${id}`, {
       method: "GET",
       cache: "no-cache"
     });
@@ -50,7 +53,7 @@ const EditItemPasge = () => {
       console.log("Error");
     }
     const dataCategorys = await res.json();
-    setCategory(dataCategorys.categorys);
+    setCategory(dataCategorys.products);
   }
   useEffect(() => {
     getCategory();
@@ -82,6 +85,8 @@ const EditItemPasge = () => {
     }
 
   }
+  console.log(category);
+  
   
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gray-50 flex items-center justify-center p-6">
@@ -98,6 +103,7 @@ const EditItemPasge = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">ProductName</label>
             <input 
               type="text"
+              value={category?.name || ""}
               onChange={(e) => {setProductName(e.target.value)}}
               placeholder="ชื่อสินค้า"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
@@ -108,6 +114,7 @@ const EditItemPasge = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <textarea 
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
+              value={category?.description || ""}
               onChange={(e) => {setDescription(e.target.value)}}
               placeholder='รายละเอียดสินค้า'></textarea>
           </div>
@@ -116,6 +123,7 @@ const EditItemPasge = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
             <input 
               type="number"
+              value={category?.price || 0}
               onChange={(e) => {setPrice(e.target.value)}}
               placeholder="ราคา"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
@@ -127,6 +135,7 @@ const EditItemPasge = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
             <input 
               type="number"
+              value={category?.quantity || 0}
               onChange={(e) => {setQuantity(e.target.value)}}
               placeholder="จำนวน"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
