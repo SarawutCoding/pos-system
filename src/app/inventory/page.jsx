@@ -24,6 +24,8 @@ const InventoryPage = () => {
   useEffect(() => {
     getProduct();
   }, [])
+  console.log(product);
+  
   
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
@@ -60,7 +62,7 @@ const InventoryPage = () => {
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">รูปภาพ</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">ชื่อสินค้า</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">รายละเอียด</th>
-                    <th className="px-4 py-4 font-medium text-gray-500 text-sm">หมวดหมู่</th>
+                    <th className="px-4 py-4 font-medium text-gray-500 text-sm">ชนิด</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">ราคา</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">คงเหลือ</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm text-center">จัดการ</th>
@@ -69,7 +71,7 @@ const InventoryPage = () => {
                 <tbody className="divide-y divide-gray-50">
                   {product && product.length > 0 ? (
                     product.map(val => (
-                      <tr className="hover:bg-gray-50/50 transition-colors">
+                      <tr key={val._id} className="hover:bg-gray-50/50 transition-colors">
                         <td className="px-4 py-4">
                           <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-gray-100">
                             {/* <img src="..." className="object-cover w-full h-full" /> */}
@@ -79,7 +81,7 @@ const InventoryPage = () => {
                         <td className="px-4 py-4 text-sm font-medium text-gray-700">{val.description}</td>
                         <td className="px-4 py-4">
                           <span className="px-3 py-1 bg-amber-50 text-amber-600 text-xs rounded-full border border-amber-100">
-                            เครื่องดื่ม
+                            {val.category_id.name}
                           </span>
                         </td>
                         <td className="px-4 py-4 text-sm text-gray-600 font-semibold">{val.price}</td>
@@ -103,9 +105,11 @@ const InventoryPage = () => {
                       </tr>
                     ))
                   ) : (
-                    <p className="bg-gray-300 p-3 my-3">
-                      You do not any posts yet.
-                    </p>
+                    <tr>
+                      <td colSpan="100%" className="text-center bg-gray-300 p-3">
+                        You do not any posts yet.
+                      </td>
+                    </tr>
                   )}
                   
                 </tbody>

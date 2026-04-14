@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectMongo } from "../../../../lib/mongoConnect";
 import Products from "../../../../model/products";
+import Category from "../../../../model/category";
 import { storage, ID } from "../../../../lib/appwriteConnect";
 import { InputFile } from "node-appwrite/file";
 
@@ -32,6 +33,6 @@ export async function POST(req) {
 
 export async function GET() {
     connectMongo();
-    const products = await Products.find({});
+    const products = await Products.find({}).populate('category_id');;
     return NextResponse.json({ products },{message: "OK"}, { status: 200 });
 }

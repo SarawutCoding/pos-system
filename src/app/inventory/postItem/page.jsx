@@ -77,9 +77,6 @@ const PostItemPasge = () => {
     }
 
   }
-
-  // taiwind
-  const input = "w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all";
   
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gray-50 flex items-center justify-center p-6">
@@ -98,14 +95,14 @@ const PostItemPasge = () => {
               type="text"
               onChange={(e) => {setProductName(e.target.value)}}
               placeholder="ชื่อสินค้า"
-              className={input}
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <textarea 
-              className={input}
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
               onChange={(e) => {setDescription(e.target.value)}}
               placeholder='รายละเอียดสินค้า'></textarea>
           </div>
@@ -116,7 +113,7 @@ const PostItemPasge = () => {
               type="number"
               onChange={(e) => {setPrice(e.target.value)}}
               placeholder="ราคา"
-              className={input}
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
             />
           </div>
 
@@ -127,7 +124,7 @@ const PostItemPasge = () => {
               type="number"
               onChange={(e) => {setQuantity(e.target.value)}}
               placeholder="จำนวน"
-              className={input}
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
             />
           </div>
 

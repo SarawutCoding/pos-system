@@ -10,8 +10,7 @@ const SearchBar = () => {
         </div>
         <input
           type="text"
-          className="w-full pl-11 pr-4 py-2.5 bg-white border border-slate-200 rounded-2xl shadow-sm
-                     focus:ring-4 focus:ring-sky-500/10 focus:border-sky-500 focus:outline-none transition-all"
+          className="w-full pl-11 pr-4 py-2.5 bg-white border border-slate-200 rounded-2xl shadow-smfocus:ring-4 focus:ring-sky-500/10 focus:border-sky-500 focus:outline-none transition-all"
           placeholder="ค้นหาข้อมูล..."
         />
       </div>
