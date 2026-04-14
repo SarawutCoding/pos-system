@@ -21,7 +21,7 @@ const SearchBar = () => {
       </button>
 
       {/* ปุ่ม Search หลัก */}
-      <button className="px-6 py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-2xl shadow-lg shadow-sky-200 transition-all active:scale-95">
+      <button className="px-6 py-2.5 bg-green-500 hover:bg-green-600 text-white font-medium rounded-2xl shadow-lg shadow-sky-200 transition-all active:scale-95">
         Search
       </button>
     </div>

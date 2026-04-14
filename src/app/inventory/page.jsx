@@ -49,7 +49,7 @@ const InventoryPage = () => {
             {/* Header Section */}
             <div className="flex justify-between items-center mb-6">
               <h1 className="text-xl font-semibold text-gray-700">รายการสินค้า (Inventory)</h1>
-              <Link href="/inventory/postItem" className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl transition-all shadow-sm text-sm">
+              <Link href="/inventory/postItem" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl transition-all shadow-sm text-sm">
                 + เพิ่มสินค้าใหม่
               </Link>
             </div>

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react';
 // นำเข้าไอคอนจาก lucide-react (สวยงามและใช้งานง่าย)
-import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Coffee, UserPlus } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, TreePalm, UserPlus } from 'lucide-react';
 
 const Sidebar = () => {
   // ดึง Pathname ปัจจุบันมาเพื่อทำ Active Link Highlight
@@ -28,11 +28,11 @@ const Sidebar = () => {
       
       {/* --- ส่วนหัว: Logo / Name --- */}
       <div className="flex items-center gap-3 px-3 py-4 mb-10 border-b border-slate-700">
-        <div className="p-2.5 bg-sky-500 rounded-xl shadow-inner">
-          <Coffee className="w-8 h-8 text-white" strokeWidth={1.5}/>
+        <div className="p-2.5 bg-green-500 rounded-xl shadow-inner">
+          <TreePalm className="w-8 h-8 text-white" strokeWidth={1.5}/>
         </div>
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-white">POS <span className="text-sky-400">System</span></h1>
+          <h1 className="text-xl font-bold tracking-tight text-white">POS <span className="text-green-400">System</span></h1>
           <p className="text-sm text-slate-400">Manage with ease</p>
         </div>
       </div>
@@ -50,18 +50,18 @@ const Sidebar = () => {
               <div
                 className={`flex items-center gap-3.5 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 group
                   ${isActive 
-                    ? 'bg-sky-500/10 text-sky-400 font-semibold shadow-sm' // สไตล์เมื่อ Active
+                    ? 'bg-sky-500/10 text-green-400 font-semibold shadow-sm' // สไตล์เมื่อ Active
                     : 'text-slate-300 hover:bg-slate-800 hover:text-white'    // สไตล์เมื่อ Hover
                   }`}
               >
                 {/* แถบสีด้านข้างเมื่อ Active */}
                 {isActive && (
-                  <div className="absolute left-0 h-8 w-1 bg-sky-400 rounded-r-full" />
+                  <div className="absolute left-0 h-8 w-1 bg-green-400 rounded-r-full" />
                 )}
 
                 {/* ไอคอน */}
                 <Icon className={`w-5 h-5 flex-shrink-0 transition-colors 
-                  ${isActive ? 'text-sky-400' : 'text-slate-500 group-hover:text-slate-300'}`} 
+                  ${isActive ? 'text-green-400' : 'text-slate-500 group-hover:text-slate-300'}`} 
                 />
                 
                 {/* ชื่อเมนู */}
