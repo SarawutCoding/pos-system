@@ -1,9 +1,30 @@
-import React from 'react'
+"use client"
+import {React, useState, useEffect} from 'react'
 import Sidebar from '../components/sidebar/Sidebar'
 import SearchBar from '../components/searchBar/SearchBar'
 import Link from 'next/link'
 
 const InventoryPage = () => {
+  const [product, setProduct] = useState("");
+
+  const getProduct = async () => {
+    const res = await fetch("http://localhost:3000/api/postItem", {
+      method: "GET",
+      cache: "no-cache"
+    })
+
+    if (!res.ok) {
+      alert("Error")
+      return
+    }
+    const data = await res.json();
+    setProduct(data.products)
+  }
+
+  useEffect(() => {
+    getProduct();
+  }, [])
+  
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* 1. Sidebar */}
@@ -38,6 +59,7 @@ const InventoryPage = () => {
                   <tr className="border-b border-gray-100">
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">รูปภาพ</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">ชื่อสินค้า</th>
+                    <th className="px-4 py-4 font-medium text-gray-500 text-sm">รายละเอียด</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">หมวดหมู่</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">ราคา</th>
                     <th className="px-4 py-4 font-medium text-gray-500 text-sm">คงเหลือ</th>
@@ -45,38 +67,47 @@ const InventoryPage = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
-                  {/* แถวตัวอย่าง - เดี๋ยวคุณนำไปใส่ .map() ได้เลย */}
-                  <tr className="hover:bg-gray-50/50 transition-colors">
-                    <td className="px-4 py-4">
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-gray-100">
-                        {/* <img src="..." className="object-cover w-full h-full" /> */}
-                      </div>
-                    </td>
-                    <td className="px-4 py-4 text-sm font-medium text-gray-700">ลาเต้เย็น (Iced Latte)</td>
-                    <td className="px-4 py-4">
-                      <span className="px-3 py-1 bg-amber-50 text-amber-600 text-xs rounded-full border border-amber-100">
-                        เครื่องดื่ม
-                      </span>
-                    </td>
-                    <td className="px-4 py-4 text-sm text-gray-600 font-semibold">65.00</td>
-                    <td className="px-4 py-4">
-                      <div className="text-sm text-gray-600">24 ชิ้น</div>
-                      {/* Progress Bar เล็กๆ เพิ่มความสวยงาม */}
-                      <div className="w-24 h-1.5 bg-gray-100 rounded-full mt-1">
-                        <div className="bg-green-500 h-1.5 rounded-full w-3/4"></div>
-                      </div>
-                    </td>
-                    <td className="px-4 py-4">
-                      <div className="flex justify-center gap-2">
-                        <button className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors">
-                          ✏️
-                        </button>
-                        <button className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
-                          🗑️
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                  {product && product.length > 0 ? (
+                    product.map(val => (
+                      <tr className="hover:bg-gray-50/50 transition-colors">
+                        <td className="px-4 py-4">
+                          <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-gray-100">
+                            {/* <img src="..." className="object-cover w-full h-full" /> */}
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700">{val.name}</td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700">{val.description}</td>
+                        <td className="px-4 py-4">
+                          <span className="px-3 py-1 bg-amber-50 text-amber-600 text-xs rounded-full border border-amber-100">
+                            เครื่องดื่ม
+                          </span>
+                        </td>
+                        <td className="px-4 py-4 text-sm text-gray-600 font-semibold">{val.price}</td>
+                        <td className="px-4 py-4">
+                          <div className="text-sm text-gray-600">{val.quantity} ต้น</div>
+                          {/* Progress Bar เล็กๆ เพิ่มความสวยงาม */}
+                          <div className="w-24 h-1.5 bg-gray-100 rounded-full mt-1">
+                            <div className="bg-green-500 h-1.5 rounded-full w-3/4"></div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4">
+                          <div className="flex justify-center gap-2">
+                            <button className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors">
+                              ✏️
+                            </button>
+                            <button className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                              🗑️
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <p className="bg-gray-300 p-3 my-3">
+                      You do not any posts yet.
+                    </p>
+                  )}
+                  
                 </tbody>
               </table>
             </div>

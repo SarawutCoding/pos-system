@@ -29,3 +29,9 @@ export async function POST(req) {
     
     return NextResponse.json({message: "OK"}, { status: 200 });
 }
+
+export async function GET() {
+    connectMongo();
+    const products = await Products.find({});
+    return NextResponse.json({ products },{message: "OK"}, { status: 200 });
+}
