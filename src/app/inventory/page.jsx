@@ -93,9 +93,11 @@ const InventoryPage = () => {
                         </td>
                         <td className="px-4 py-4">
                           <div className="flex justify-center gap-2">
-                            <button className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors">
+                            <Link 
+                            href={`/inventory/editItem/${val._id}`}
+                            className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors">
                               ✏️
-                            </button>
+                            </Link>
                             <button className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
                               🗑️
                             </button>
