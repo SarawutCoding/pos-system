@@ -24,7 +24,6 @@ const InventoryPage = () => {
   useEffect(() => {
     getProduct();
   }, [])
-  console.log(product);
   
   
   return (
