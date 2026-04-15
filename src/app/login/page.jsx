@@ -15,7 +15,7 @@ const LoginPage = () => {
     useEffect(() => {
         if (session) route.replace("/");
     }, [session, route]);
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -57,7 +57,7 @@ const LoginPage = () => {
               type="password"
               onChange={(e) => {setPassword(e.target.value)}}
               placeholder="รหัสผ่าน"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
             />
           </div>
 
@@ -65,7 +65,7 @@ const LoginPage = () => {
           <div className="flex flex-col gap-3 pt-4">
             <button 
               type="submit"
-              className="w-full bg-amber-400 hover:bg-amber-500 text-gray-800 font-bold py-3 rounded-xl shadow-lg shadow-amber-200 transition-all active:scale-[0.98]"
+              className="w-full bg-sky-400 hover:bg-sky-500 text-gray-800 font-bold py-3 rounded-xl shadow-lg shadow-sky-200 transition-all active:scale-[0.98] cursor-pointer"
             >
               {isSubmitting ? <Loading /> : "เข้าสู่ระบบ"}
             </button>
