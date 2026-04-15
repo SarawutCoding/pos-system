@@ -85,7 +85,6 @@ const EditItemPasge = ({ params }) => {
     }
 
   }
-  console.log(category);
   
   
   return (
