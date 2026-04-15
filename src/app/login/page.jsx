@@ -10,22 +10,15 @@ const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const route = useRouter();
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const { data: session, status } = useSession();
     useEffect(() => {
         if (session) route.replace("/");
     }, [session, route]);
-
-    if (status === "loading") {
-      return(
-        <div className="flex h-screen items-center justify-center">
-          <Loading />
-        </div>
-      )
-    }
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        setIsSubmitting(true);
         const res = await signIn("credentials", { email, password, redirect: false });
         if (res.error) {
           return
@@ -71,10 +64,10 @@ const LoginPage = () => {
           {/* Buttons */}
           <div className="flex flex-col gap-3 pt-4">
             <button 
-              type="submit" 
+              type="submit"
               className="w-full bg-amber-400 hover:bg-amber-500 text-gray-800 font-bold py-3 rounded-xl shadow-lg shadow-amber-200 transition-all active:scale-[0.98]"
             >
-              เข้าสู่ระบบ
+              {isSubmitting ? <Loading /> : "เข้าสู่ระบบ"}
             </button>
           </div>
         </form>
