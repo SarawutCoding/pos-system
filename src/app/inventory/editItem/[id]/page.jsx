@@ -74,7 +74,7 @@ const EditItemPasge = ({ params }) => {
     formData.append("fileImge", fileImge);
     formData.append("categoryID", categoryID);
 
-    const res = await fetch("http://localhost:3000/api/postItem/", {
+    const res = await fetch(`http://localhost:3000/api/postItem/${id}`, {
       method: "POST",
       body: formData
     })
