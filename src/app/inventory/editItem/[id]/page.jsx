@@ -75,7 +75,7 @@ const EditItemPasge = ({ params }) => {
     formData.append("categoryID", categoryID);
 
     const res = await fetch(`http://localhost:3000/api/postItem/${id}`, {
-      method: "POST",
+      method: "PUT",
       body: formData
     })
 
