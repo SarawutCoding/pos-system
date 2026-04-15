@@ -4,15 +4,24 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
+import Loading from '../components/loading/Loading';
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const route = useRouter();
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     useEffect(() => {
         if (session) route.replace("/");
     }, [session, route]);
+
+    if (status === "loading") {
+      return(
+        <div className="flex h-screen items-center justify-center">
+          <Loading />
+        </div>
+      )
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
