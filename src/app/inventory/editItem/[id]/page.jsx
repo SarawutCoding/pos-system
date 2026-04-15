@@ -43,8 +43,8 @@ const EditItemPasge = ({ params }) => {
   }
 
   // GET category
-  const [category, setCategory] = useState("");
-  const getCategory = async () => {
+  const [product, setProduct] = useState("");
+  const getDataProduct = async () => {
     const res = await fetch(`http://localhost:3000/api/postItem/${id}`, {
       method: "GET",
       cache: "no-cache"
@@ -53,10 +53,10 @@ const EditItemPasge = ({ params }) => {
       console.log("Error");
     }
     const dataCategorys = await res.json();
-    setCategory(dataCategorys.products);
+    setProduct(dataCategorys.products);
   }
   useEffect(() => {
-    getCategory();
+    getDataProduct();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -103,7 +103,7 @@ const EditItemPasge = ({ params }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">ProductName</label>
             <input 
               type="text"
-              value={category?.name || ""}
+              value={product?.name || ""}
               onChange={(e) => {setProductName(e.target.value)}}
               placeholder="ชื่อสินค้า"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
@@ -114,7 +114,7 @@ const EditItemPasge = ({ params }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <textarea 
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
-              value={category?.description || ""}
+              value={product?.description || ""}
               onChange={(e) => {setDescription(e.target.value)}}
               placeholder='รายละเอียดสินค้า'></textarea>
           </div>
@@ -123,7 +123,7 @@ const EditItemPasge = ({ params }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
             <input 
               type="number"
-              value={category?.price || 0}
+              value={product?.price || 0}
               onChange={(e) => {setPrice(e.target.value)}}
               placeholder="ราคา"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
@@ -135,7 +135,7 @@ const EditItemPasge = ({ params }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
             <input 
               type="number"
-              value={category?.quantity || 0}
+              value={product?.quantity || 0}
               onChange={(e) => {setQuantity(e.target.value)}}
               placeholder="จำนวน"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
@@ -155,8 +155,8 @@ const EditItemPasge = ({ params }) => {
             <div className="flex-1">
               <select onChange={(e) => {setCategoryID(e.target.value)}} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all cursor-pointer bg-white">
                 <option value="">เลือกหมวดหมู่</option>
-                {category && category.length > 0 && (
-                  category.map(val => (
+                {product && product.length > 0 && (
+                  product.map(val => (
                     <option key={val._id} value={val._id}>{val.name}</option>
                   ))
                 )}
