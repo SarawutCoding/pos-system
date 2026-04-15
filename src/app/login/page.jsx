@@ -18,6 +18,10 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!email || !password) {
+          alert("โปรดป้อนรหัสผ่าน");
+          return
+        }
         setIsSubmitting(true);
         const res = await signIn("credentials", { email, password, redirect: false });
         if (res.error) {
