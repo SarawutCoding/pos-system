@@ -43,6 +43,7 @@ const EditItemPasge = ({ params }) => {
 
   // GET category
   const [product, setProduct] = useState("");
+  const [category, setCategory] = useState("");
   const getDataProduct = async () => {
     const res = await fetch(`http://localhost:3000/api/postItem/${id}`, {
       method: "GET",
