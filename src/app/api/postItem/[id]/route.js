@@ -24,19 +24,8 @@ export async function PUT(req, { params }) {
 
     await connectMongo();
 
-    const bufferFile = Buffer.from(await fileImge.arrayBuffer());
-    
-    const resAppWrite = await storage.createFile(process.env.BUSKET_ID, ID.unique(),InputFile.fromBuffer(bufferFile, fileImge.name));
-    
-    await connectMongo();
-    await Products.create({
-        name: productName,
-        description: description,
-        price: price,
-        quantity: quantity,
-        category_id: categoryID,
-        image_url: resAppWrite.$id
-    });
+    const imgID = await Products.findById(id).select("image_url");
+    console.log(imgID);
     
     return NextResponse.json({message: "OK"}, { status: 200 });
 }

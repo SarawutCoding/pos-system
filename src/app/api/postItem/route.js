@@ -38,10 +38,12 @@ export async function GET() {
         /*const arrayBuffer = await storage.getFileView(
             process.env.BUSKET_ID,
             val.image_url
-        );*/
+        );
+            const base64 = Buffer.from(arrayBuffer).toString('base64');
+            const imgUrl = `data:image/jpeg;base64,${base64}`;
+        */
 
-        //const base64 = Buffer.from(arrayBuffer).toString('base64');
-        //const imgUrl = `data:image/jpeg;base64,${base64}`;
+        //เทคนิคพิเศษ เพิ่ม parameter ต่อท้าย URL const imgUrl = `${endpoint}/.../view?project=${projectId}&width=200&height=200&gravity=center&quality=80`;
         const imgUrl = `${process.env.API_ENDPOINT}/storage/buckets/${process.env.BUSKET_ID}/files/${val.image_url}/view?project=${process.env.PROJECT_ID}`;
 
         return { ...val._doc, imgUrl: imgUrl };
