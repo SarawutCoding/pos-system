@@ -22,6 +22,32 @@ const EditItemPasge = ({ params }) => {
   //categoryName
   const [categoryName, setCategoryName] = useState("");
 
+   // GET category
+   const [category, setCategory] = useState("");
+  const getDataProduct = async () => {
+    const resProduct = await fetch(`http://localhost:3000/api/postItem/${id}`, {
+      method: "GET",
+      cache: "no-cache"
+    });
+    const resCategory = await fetch(`http://localhost:3000/api/postItem/postCategory`, {
+      method: "GET",
+      cache: "no-cache"
+    });
+    if (!resProduct.ok || !resCategory.ok) {
+      console.log("Error");
+    }
+    const dataProduct = await resProduct.json();
+    const dataCategorys = await resCategory.json();
+    setProductName(dataProduct.products.name);
+    setDescription(dataProduct.products.description);
+    setPrice(dataProduct.products.price);
+    setQuantity(dataProduct.products.quantity);
+    setCategory(dataCategorys.categorys);
+  }
+  useEffect(() => {
+    getDataProduct();
+  }, []);
+
   //create category
   const handleSubmitCategory = async (e) => {
     e.preventDefault()
@@ -41,32 +67,10 @@ const EditItemPasge = ({ params }) => {
     
   }
 
-  // GET category
-  const [product, setProduct] = useState("");
-  const [category, setCategory] = useState("");
-  const getDataProduct = async () => {
-    const resProduct = await fetch(`http://localhost:3000/api/postItem/${id}`, {
-      method: "GET",
-      cache: "no-cache"
-    });
-    const resCategory = await fetch(`http://localhost:3000/api/postItem/postCategory`, {
-      method: "GET",
-      cache: "no-cache"
-    });
-    if (!resProduct.ok || !resCategory.ok) {
-      console.log("Error");
-    }
-    const dataProduct = await resProduct.json();
-    const dataCategorys = await resCategory.json();
-    setProduct(dataProduct.products);
-    setCategory(dataCategorys.categorys);
-  }
-  useEffect(() => {
-    getDataProduct();
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(productName, description, price,quantity,fileImge,categoryID);
+    
     if (!productName || !description || !price || !quantity || !fileImge || !categoryID) {
         alert("ข้อมูลไม่ครบ")
         return
@@ -108,7 +112,7 @@ const EditItemPasge = ({ params }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">ProductName</label>
             <input 
               type="text"
-              value={product?.name || ""}
+              value={productName || ""}
               onChange={(e) => {setProductName(e.target.value)}}
               placeholder="ชื่อสินค้า"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
@@ -119,7 +123,7 @@ const EditItemPasge = ({ params }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <textarea 
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
-              value={product?.description || ""}
+              value={description || ""}
               onChange={(e) => {setDescription(e.target.value)}}
               placeholder='รายละเอียดสินค้า'></textarea>
           </div>
@@ -128,7 +132,7 @@ const EditItemPasge = ({ params }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
             <input 
               type="number"
-              value={product?.price || 0}
+              value={price || 0}
               onChange={(e) => {setPrice(e.target.value)}}
               placeholder="ราคา"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
@@ -140,7 +144,7 @@ const EditItemPasge = ({ params }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
             <input 
               type="number"
-              value={product?.quantity || 0}
+              value={quantity || 0}
               onChange={(e) => {setQuantity(e.target.value)}}
               placeholder="จำนวน"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all"
