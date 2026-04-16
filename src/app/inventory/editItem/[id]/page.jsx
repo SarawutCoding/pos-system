@@ -45,15 +45,21 @@ const EditItemPasge = ({ params }) => {
   const [product, setProduct] = useState("");
   const [category, setCategory] = useState("");
   const getDataProduct = async () => {
-    const res = await fetch(`http://localhost:3000/api/postItem/${id}`, {
+    const resProduct = await fetch(`http://localhost:3000/api/postItem/${id}`, {
       method: "GET",
       cache: "no-cache"
     });
-    if (!res.ok) {
+    const resCategory = await fetch(`http://localhost:3000/api/postItem/postCategory`, {
+      method: "GET",
+      cache: "no-cache"
+    });
+    if (!resProduct.ok || !resCategory.ok) {
       console.log("Error");
     }
-    const dataCategorys = await res.json();
-    setProduct(dataCategorys.products);
+    const dataProduct = await resProduct.json();
+    const dataCategorys = await resCategory.json();
+    setProduct(dataProduct.products);
+    setCategory(dataCategorys.categorys);
   }
   useEffect(() => {
     getDataProduct();
@@ -154,8 +160,8 @@ const EditItemPasge = ({ params }) => {
             <div className="flex-1">
               <select onChange={(e) => {setCategoryID(e.target.value)}} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all cursor-pointer bg-white">
                 <option value="">เลือกหมวดหมู่</option>
-                {product && product.length > 0 && (
-                  product.map(val => (
+                {category && category.length > 0 && (
+                  category.map(val => (
                     <option key={val._id} value={val._id}>{val.name}</option>
                   ))
                 )}
