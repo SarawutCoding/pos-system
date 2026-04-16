@@ -35,13 +35,14 @@ export async function GET() {
     connectMongo();
     const products = await Products.find({}).populate('category_id');;
     const productsComplte = await Promise.all(products.map(async (val) => {
-        const arrayBuffer = await storage.getFileView(
+        /*const arrayBuffer = await storage.getFileView(
             process.env.BUSKET_ID,
             val.image_url
-        );
+        );*/
 
-        const base64 = Buffer.from(arrayBuffer).toString('base64');
-        const imgUrl = `data:image/jpeg;base64,${base64}`;
+        //const base64 = Buffer.from(arrayBuffer).toString('base64');
+        //const imgUrl = `data:image/jpeg;base64,${base64}`;
+        const imgUrl = `${process.env.API_ENDPOINT}/storage/buckets/${process.env.BUSKET_ID}/files/${val.image_url}/view?project=${process.env.PROJECT_ID}`;
 
         return { ...val._doc, imgUrl: imgUrl };
     }))

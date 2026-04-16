@@ -22,6 +22,8 @@ export async function PUT(req, { params }) {
     const categoryID = formData.get("categoryID");
     const fileImge = formData.get("fileImge");
 
+    await connectMongo();
+
     const bufferFile = Buffer.from(await fileImge.arrayBuffer());
     
     const resAppWrite = await storage.createFile(process.env.BUSKET_ID, ID.unique(),InputFile.fromBuffer(bufferFile, fileImge.name));
