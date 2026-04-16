@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { connectMongo } from "../../../../../lib/mongoConnect";
 import Products from "../../../../../model/products";
 import Category from "../../../../../model/category";
+import { storage, ID } from "../../../../lib/appwriteConnect";
+import { InputFile } from "node-appwrite/file";
 
 export async function GET(req, { params }) {
     const { id } = await params;
