@@ -11,7 +11,6 @@ const EditItemPasge = ({ params }) => {
   const [quantity, setQuantity] = useState(0);
   const [categoryID, setCategoryID] = useState("");
   const [fileImge, setFileImge] = useState(null);
-  console.log(id);
   
 
   //router
