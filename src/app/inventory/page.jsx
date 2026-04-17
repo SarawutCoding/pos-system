@@ -25,12 +25,25 @@ const InventoryPage = () => {
   useEffect(() => {
     getProduct();
   }, [])
+
+  const deleteProduct = async (id) => {
+    const res = await fetch(`http://localhost:3000/api/postItem/${id}`, {
+      method: "DELETE"
+    });
+
+    if (!res.ok) {
+      alert("Error")
+      return
+    }else{
+      alert("ลบข้อมูลสำเร็จ")
+    }
+    
+  }
   
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* 1. Sidebar */}
       <Sidebar />
-
       {/* 2. Main Area */}
       <div className="flex flex-col flex-1 overflow-hidden">
         
@@ -98,7 +111,7 @@ const InventoryPage = () => {
                             className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors">
                               ✏️
                             </Link>
-                            <button className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                            <button type="buttonb" onClick={() => deleteProduct(val._id)}  className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
                               🗑️
                             </button>
                           </div>
