@@ -44,7 +44,7 @@ export async function PUT(req, { params }) {
 }
 
 
-export async function PUT(req, { params }) {
+export async function DELETE(req, { params }) {
     const { id } = await params;
     await connectMongo();
     const imgID = await Products.findById(id).select("image_url");
