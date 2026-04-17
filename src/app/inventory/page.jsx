@@ -1,5 +1,6 @@
 "use client"
 import {React, useState, useEffect} from 'react'
+import { useRouter } from 'next/navigation'
 import Sidebar from '../components/sidebar/Sidebar'
 import SearchBar from '../components/searchBar/SearchBar'
 import Link from 'next/link'
@@ -7,6 +8,7 @@ import Loading from '../components/loading/Loading'
 
 const InventoryPage = () => {
   const [product, setProduct] = useState("");
+  const router = useRouter();
 
   const getProduct = async () => {
     const res = await fetch("http://localhost:3000/api/postItem", {
@@ -35,7 +37,8 @@ const InventoryPage = () => {
       alert("Error")
       return
     }else{
-      alert("ลบข้อมูลสำเร็จ")
+      alert("ลบข้อมูลสำเร็จ");
+      window.location.reload()
     }
     
   }
