@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { connectMongo } from "../../../../../lib/mongoConnect";
 import Products from "../../../../../model/products";
 import Category from "../../../../../model/category";
-import { storage } from "../../../../../lib/appwriteConnect";
+import { ID, storage } from "../../../../../lib/appwriteConnect";
 import { InputFile } from "node-appwrite/file";
 
 export async function GET(req, { params }) {
@@ -22,6 +22,7 @@ export async function PUT(req, { params }) {
     const categoryID = formData.get("categoryID");
     const fileImge = formData.get("fileImge");
 
+    const buffleFile = Buffer.from(await fileImge.arrayBuffer());
     await connectMongo();
 
     const imgID = await Products.findById(id).select("image_url");
@@ -29,7 +30,15 @@ export async function PUT(req, { params }) {
         await storage.deleteFile(process.env.BUSKET_ID, imgID);
     }
 
-    
-    
+    const resAppWrite = await storage.createFile(process.env.BUSKET_ID, ID.unique(), InputFile.fromBuffer(buffleFile, fileImge.name));
+    await Products.findByIdAndUpdate(id, {
+        name: productName,
+        description: description,
+        price: price,
+        quantity: quantity,
+        category_id: categoryID,
+        image_url: resAppWrite.$id
+    })
+        
     return NextResponse.json({message: "OK"}, { status: 200 });
 }
