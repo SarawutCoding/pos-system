@@ -27,7 +27,7 @@ export async function PUT(req, { params }) {
 
     const imgID = await Products.findById(id).select("image_url");
     if (imgID) {
-        await storage.deleteFile(process.env.BUSKET_ID, imgID);
+        await storage.deleteFile(process.env.BUSKET_ID, imgID.image_url);
     }
 
     const resAppWrite = await storage.createFile(process.env.BUSKET_ID, ID.unique(), InputFile.fromBuffer(buffleFile, fileImge.name));

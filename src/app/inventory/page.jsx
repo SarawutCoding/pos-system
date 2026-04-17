@@ -26,7 +26,6 @@ const InventoryPage = () => {
     getProduct();
   }, [])
   
-  
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* 1. Sidebar */}
