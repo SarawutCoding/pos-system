@@ -42,3 +42,16 @@ export async function PUT(req, { params }) {
         
     return NextResponse.json({message: "OK"}, { status: 200 });
 }
+
+
+export async function PUT(req, { params }) {
+    const { id } = await params;
+    await connectMongo();
+    const imgID = await Products.findById(id).select("image_url");
+    if (imgID) {
+        await storage.deleteFile(process.env.BUSKET_ID, imgID.image_url);
+    }
+    await Products.findByIdAndDelete(id);
+        
+    return NextResponse.json({message: "OK"}, { status: 200 });
+}
