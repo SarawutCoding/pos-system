@@ -25,6 +25,10 @@ export async function PUT(req, { params }) {
     await connectMongo();
 
     const imgID = await Products.findById(id).select("image_url");
+    if (imgID) {
+        await storage.deleteFile(process.env.BUSKET_ID, imgID);
+    }
+
     
     
     return NextResponse.json({message: "OK"}, { status: 200 });
