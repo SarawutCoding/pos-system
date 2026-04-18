@@ -2,7 +2,7 @@ import { connectMongo } from "../../../lib/mongoConnect";
 import Category from "../../../model/category";
 import React from "react";
 
-const PostCategory = async (id) => {
+const PostCategory = async ({id}) => {
     await connectMongo();
     const category = "";
     if (id) {
