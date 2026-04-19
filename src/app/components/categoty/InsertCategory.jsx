@@ -1,12 +1,18 @@
 import { connectMongo } from "../../../../lib/mongoConnect";
 import Category from "../../../../model/category";
 import PostCategory from "./PostCategory";
-import React from 'react'
+import React from "react";
 
-const InsertCategory = () => {
+const InsertCategory = async () => {
+  await connectMongo({ id });
+  if (id) {
+    
+  }
   return (
-    <div></div>
-  )
-}
+    <div>
+      <PostCategory/>
+    </div>
+  );
+};
 
-export default InsertCategory
+export default InsertCategory;
