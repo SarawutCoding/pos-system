@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 
-const PostCategory = () => {
+const PostCategory = ({ category,  categoryID, model}) => {
   return (
     <div className="flex items-center gap-2 w-full">
       <div className="flex-1">
         <select
           onChange={(e) => {
-            setCategoryID(e.target.value);
+            categoryID(e.target.value);
           }}
           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all cursor-pointer bg-white"
         >
@@ -25,7 +25,7 @@ const PostCategory = () => {
       {/* ปุ่มเพิ่มหมวดหมู่ - ปรับให้ขนาดสูงเท่ากับ Select */}
       <button
         type="button"
-        onClick={() => setModal(true)}
+        onClick={() => model(true)}
         className="px-4 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-medium transition-colors shadow-sm flex items-center justify-center whitespace-nowrap"
         title="เพิ่มหมวดหมู่"
       >

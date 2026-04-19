@@ -3,14 +3,19 @@ import Category from "../../../../model/category";
 import PostCategory from "./PostCategory";
 import React from "react";
 
-const InsertCategory = async () => {
-  await connectMongo({ id });
+const InsertCategory = async ({ id, categoryID, model}) => {
+  await connectMongo();
+  let categoryData = "";
   if (id) {
+    categoryData = await Category.findById(id);
     
+  }else{
+    categoryData = await Category.find({});
   }
+  const category = JSON.parse(JSON.stringify(categoryData));
   return (
     <div>
-      <PostCategory/>
+      <PostCategory category={category} categoryID={categoryID} model={model}/>
     </div>
   );
 };
