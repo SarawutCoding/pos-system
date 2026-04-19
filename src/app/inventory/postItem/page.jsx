@@ -2,7 +2,6 @@
 import React , { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
-import PostCategory from '@/app/components/categoty/PostCategory';
 
 const PostItemPasge = () => {
   const [productName, setProductName] = useState("");
