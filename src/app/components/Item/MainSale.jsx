@@ -1,15 +1,14 @@
 "use client";
 import React, { useState } from "react";
+import ProductCard from "./ProductCard";
 
-const MainSale = ({ Products, category }) => {
+const MainSale = ({ products, category }) => {
   return (
     <main>
       <ul className="flex flex-wrap items-center gap-3 p-4">
-        {/* ปุ่ม "ทั้งหมด" */}
         <li className="cursor-pointer px-5 py-2 rounded-full border-2 border-emerald-600 bg-emerald-600 text-white font-medium transition-all hover:bg-emerald-700 hover:border-emerald-700 shadow-sm">
           ทั้งหมด
         </li>
-
         {category && category.length > 0 ? (
           category.map((val) => (
             <li
@@ -23,6 +22,12 @@ const MainSale = ({ Products, category }) => {
           <li className="text-gray-400 italic py-2">ไม่มีหมวดหมู่</li>
         )}
       </ul>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5 overflow-y-auto">
+        {products?.map((item) => (
+          <ProductCard key={item._id} product={item} />
+        ))}
+      </div>
     </main>
   );
 };
