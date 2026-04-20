@@ -22,6 +22,9 @@ const itemsPage = async () => {
         <Sidebar />
 
         <div className="flex flex-col flex-1 overflow-hidden">
+            <div className='p-6'>
+                <h1 className="text-3xl font-bold text-gray-800">ขายสินค้า</h1>
+            </div>
             <div className='p-5'>
                 <SearchBar/>
             </div>
