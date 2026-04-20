@@ -1,10 +1,17 @@
 import React from 'react'
 import { connectMongo } from '../../../lib/mongoConnect'
 import Products from '../../../model/products'
+import Category from '../../../model/category'
 import Sidebar from '../components/sidebar/Sidebar'
 import SearchBar from '../components/searchBar/SearchBar'
+import MainSale from '../components/Item/MainSale'
 
-const itemsPage = () => {
+const itemsPage = async () => {
+    await connectMongo();
+    const dataProduct = await Products.find({}).populate('category_id');
+    const dataCategory = await Category.find({});
+    const products = JSON.parse(JSON.stringify(dataProduct));
+    const category = JSON.parse(JSON.stringify(dataCategory));
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
         <Sidebar />
@@ -13,15 +20,7 @@ const itemsPage = () => {
             <div className='p-5'>
                 <SearchBar/>
             </div>
-            <ul className='flex flex-col md:flex-row gap-2 md:gap-4'>
-                <li>ทั้งหมด</li>
-                <li>ไม้ยืนต้น</li>
-                <li>ไม้พุ่ม</li>
-                <li>ไม้คลุมดิน</li>
-                <li>ไม้เลื้อย</li>
-                <li>ไม้ประดับ</li>
-                <li>ไม้น้ำ</li>
-            </ul>
+            <MainSale products={products} category={category}/>
         </div>
     </div>
   )
