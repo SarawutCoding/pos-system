@@ -1,4 +1,6 @@
 import React from 'react'
+import { connectMongo } from '../../../lib/mongoConnect'
+import Products from '../../../model/products'
 import Sidebar from '../components/sidebar/Sidebar'
 import SearchBar from '../components/searchBar/SearchBar'
 

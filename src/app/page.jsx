@@ -1,5 +1,5 @@
 "use client"
-import Navbar from "./components/navbar/Navbar";
+import Loading from "./components/loading/Loading";
 import Sidebar from "./components/sidebar/Sidebar";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ export default function Home() {
 
   // 3. ระหว่างรอโหลด หรือถ้าไม่มี Session ไม่ต้องวาด Navbar (ป้องกันหน้าแวบ)
   if (status === "loading") {
-    return <div className="p-10 text-center">กำลังยืนยันตัวตน...</div>;
+    return <div className="flex h-screen items-center justify-center"> <Loading/></div>;
   }
 
   if (!session) {
