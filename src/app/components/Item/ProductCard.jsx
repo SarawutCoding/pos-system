@@ -6,9 +6,9 @@ const ProductCard = ({ product }) => {
       
       {/* 1. พื้นที่รูปภาพ (Product Image) */}
       <div className="relative h-40 w-full bg-emerald-50 overflow-hidden">
-        {product.image ? (
+        {product.imgUrl ? (
           <img 
-            src={product.image} 
+            src={product.imgUrl} 
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />

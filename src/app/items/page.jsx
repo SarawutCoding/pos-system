@@ -10,7 +10,12 @@ const itemsPage = async () => {
     await connectMongo();
     const dataProduct = await Products.find({}).populate('category_id');
     const dataCategory = await Category.find({});
-    const products = JSON.parse(JSON.stringify(dataProduct));
+    const productsComplte = await Promise.all(dataProduct.map(async (val) => {
+        const imgUrl = `${process.env.API_ENDPOINT}/storage/buckets/${process.env.BUSKET_ID}/files/${val.image_url}/view?project=${process.env.PROJECT_ID}`;
+
+        return { ...val._doc, imgUrl: imgUrl };
+    }))
+    const products = JSON.parse(JSON.stringify(productsComplte));
     const category = JSON.parse(JSON.stringify(dataCategory));
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
