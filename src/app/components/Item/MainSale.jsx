@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 
 const MainSale = ({ products, category }) => {
@@ -7,7 +7,14 @@ const MainSale = ({ products, category }) => {
   return (
     <main>
       <ul className="flex flex-wrap items-center gap-3 p-4">
-        <li className="cursor-pointer px-5 py-2 rounded-full border-2 border-emerald-600 bg-emerald-600 text-white font-medium transition-all hover:bg-emerald-700 hover:border-emerald-700 shadow-sm">
+        <li
+          className={`cursor-pointer px-5 py-2 rounded-full border-2 transition-all${
+            achiveCategory === "ทั้งหมด"
+              ? "bg-emerald-700 border-emerald-700 text-white shadow-inner"
+              : "bg-white border-emerald-100 text-emerald-800 hover:border-emerald-500"
+          }`}
+          onClick={() => setAcgiveCategory("ทั้งหมด")}
+        >
           ทั้งหมด
         </li>
         {category && category.length > 0 ? (
@@ -16,8 +23,8 @@ const MainSale = ({ products, category }) => {
               key={val._id}
               className={`cursor-pointer px-5 py-2 rounded-full border-2 transition-all${
                 achiveCategory === val.name
-                  ? 'bg-emerald-700 border-emerald-700 text-white shadow-inner'
-                  : 'bg-white border-emerald-100 text-emerald-800 hover:border-emerald-500'
+                  ? "bg-emerald-700 border-emerald-700 text-white shadow-inner"
+                  : "bg-white border-emerald-100 text-emerald-800 hover:border-emerald-500"
               }`}
               onClick={() => setAcgiveCategory(val.name)}
             >
