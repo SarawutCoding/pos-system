@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 
 const MainSale = ({ products, category }) => {
+  const [achiveCategory, setAcgiveCategory] = useState("ทั้งหมด");
   return (
     <main>
       <ul className="flex flex-wrap items-center gap-3 p-4">
