@@ -4,6 +4,17 @@ import ProductCard from "./ProductCard";
 
 const MainSale = ({ products, category }) => {
   const [achiveCategory, setAcgiveCategory] = useState("ทั้งหมด");
+  const checkData = () => {
+    const filtered = [];
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].category === achiveCategory) {
+        filtered.push(products[i]);
+      }
+    }
+  };
+  useEffect(() => {
+    checkData();
+  }, [achiveCategory]);
   return (
     <main>
       <ul className="flex flex-wrap items-center gap-3 p-4">
