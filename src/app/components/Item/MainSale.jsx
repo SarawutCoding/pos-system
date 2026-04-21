@@ -4,23 +4,12 @@ import ProductCard from "./ProductCard";
 
 const MainSale = ({ products, category }) => {
   const [achiveCategory, setAcgiveCategory] = useState("ทั้งหมด");
-  const [checkProduct, setCheckProduct] = useState("");
-  const checkData = () => {
-    const filtered = [];
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].category_id.name === achiveCategory) {
-        filtered.push(products[i]);
-      }
+  const checkProduct = [];
+  for (let i = 0; i < products.length; i++) {
+    if (achiveCategory === "ทั้งหมด" || products[i].category_id?.name === achiveCategory) {
+      checkProduct.push(products[i]);
     }
-    return filtered
-  };
-  useEffect(() => {
-    if (achiveCategory === "ทั้งหมด") {
-      setCheckProduct(products)
-    }else{
-      setCheckProduct(checkData());
-    }
-  }, [achiveCategory]);
+  }
   return (
     <main>
       <ul className="flex flex-wrap items-center gap-3 p-4">
