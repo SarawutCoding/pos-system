@@ -14,7 +14,12 @@ const MainSale = ({ products, category }) => {
           category.map((val) => (
             <li
               key={val._id}
-              className="cursor-pointer px-5 py-2 rounded-full border-2 border-emerald-100 bg-white text-emerald-800 font-medium transition-all hover:border-emerald-500 hover:text-emerald-600 hover:shadow-md active:scale-95"
+              className={`cursor-pointer px-5 py-2 rounded-full border-2 transition-all${
+                achiveCategory === val.name
+                  ? 'bg-emerald-700 border-emerald-700 text-white shadow-inner'
+                  : 'bg-white border-emerald-100 text-emerald-800 hover:border-emerald-500'
+              }`}
+              onClick={() => setAcgiveCategory(val.name)}
             >
               {val.name}
             </li>
