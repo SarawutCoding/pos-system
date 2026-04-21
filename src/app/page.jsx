@@ -31,7 +31,9 @@ export default function Home() {
       <div className="flex flex-col flex-1">
         {/* Main Content: พื้นที่แสดงเนื้อหาหน้าเว็บ */}
         <main className="flex-1 overflow-y-auto p-6 bg-slate-50">
-          {/* ตรงนี้คือส่วนที่หน้าต่างๆ จะมาแสดงผล */}
+          <div>
+              <h1 className="text-3xl font-bold text-gray-800">DashBoard</h1>
+          </div>
         </main>
       </div>
     </div>
