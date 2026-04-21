@@ -8,7 +8,7 @@ const MainSale = ({ products, category }) => {
     <main>
       <ul className="flex flex-wrap items-center gap-3 p-4">
         <li
-          className={`cursor-pointer px-5 py-2 rounded-full border-2 transition-all${
+          className={`cursor-pointer px-5 py-2 rounded-full border-2 transition-all ${
             achiveCategory === "ทั้งหมด"
               ? "bg-emerald-700 border-emerald-700 text-white shadow-inner"
               : "bg-white border-emerald-100 text-emerald-800 hover:border-emerald-500"
@@ -21,7 +21,7 @@ const MainSale = ({ products, category }) => {
           category.map((val) => (
             <li
               key={val._id}
-              className={`cursor-pointer px-5 py-2 rounded-full border-2 transition-all${
+              className={`cursor-pointer px-5 py-2 rounded-full border-2 transition-all ${
                 achiveCategory === val.name
                   ? "bg-emerald-700 border-emerald-700 text-white shadow-inner"
                   : "bg-white border-emerald-100 text-emerald-800 hover:border-emerald-500"
