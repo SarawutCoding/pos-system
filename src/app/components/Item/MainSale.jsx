@@ -4,16 +4,22 @@ import ProductCard from "./ProductCard";
 
 const MainSale = ({ products, category }) => {
   const [achiveCategory, setAcgiveCategory] = useState("ทั้งหมด");
+  const [checkProduct, setCheckProduct] = useState("");
   const checkData = () => {
     const filtered = [];
     for (let i = 0; i < products.length; i++) {
-      if (products[i].category === achiveCategory) {
+      if (products[i].category_id.name === achiveCategory) {
         filtered.push(products[i]);
       }
     }
+    return filtered
   };
   useEffect(() => {
-    checkData();
+    if (achiveCategory === "ทั้งหมด") {
+      setCheckProduct(products)
+    }else{
+      setCheckProduct(checkData());
+    }
   }, [achiveCategory]);
   return (
     <main>
@@ -48,7 +54,7 @@ const MainSale = ({ products, category }) => {
       </ul>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5 overflow-y-auto">
-        {products?.map((item) => (
+        {checkProduct?.map((item) => (
           <ProductCard key={item._id} product={item} />
         ))}
       </div>
