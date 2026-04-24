@@ -7,10 +7,7 @@ const MainSale = ({ products, category }) => {
   const [achiveCategory, setAcgiveCategory] = useState("ทั้งหมด");
   const checkProduct = [];
   for (let i = 0; i < products.length; i++) {
-    if (
-      achiveCategory === "ทั้งหมด" ||
-      products[i].category_id?.name === achiveCategory
-    ) {
+    if (achiveCategory === "ทั้งหมด" || products[i].category_id?.name === achiveCategory) {
       checkProduct.push(products[i]);
     }
   }
