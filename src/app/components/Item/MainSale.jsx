@@ -42,12 +42,18 @@ const MainSale = ({ products, category }) => {
           <li className="text-gray-400 italic py-2">ไม่มีหมวดหมู่</li>
         )}
       </ul>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5 overflow-y-auto">
-        {checkProduct?.map((item) => (
-          <ProductCard key={item._id} product={item} />
-        ))}
+      
+      <div className="flex">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5 overflow-y-auto">
+          {checkProduct?.map((item) => (
+            <ProductCard key={item._id} product={item} cartLick={setDataCart} />
+          ))}
+        </div>
+        <div>
+          <h1>gggg</h1>
+        </div>
       </div>
+      
     </main>
   );
 };
