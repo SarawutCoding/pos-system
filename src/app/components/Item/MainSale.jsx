@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
+import Cart from "./Cart";
 
 const MainSale = ({ products, category }) => {
   const [achiveCategory, setAcgiveCategory] = useState("ทั้งหมด");
@@ -50,7 +51,7 @@ const MainSale = ({ products, category }) => {
           ))}
         </div>
         <div>
-          <h1>gggg</h1>
+          <Cart listCart={dataCart}/>
         </div>
       </div>
       
