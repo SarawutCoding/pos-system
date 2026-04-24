@@ -20,7 +20,16 @@ const itemsPage = async () => {
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
         <Sidebar />
-        <MainSale products={products} category={category}/>
+
+        <div className="flex flex-col flex-1 overflow-hidden">
+            <div className='p-6'>
+                <h1 className="text-3xl font-bold text-gray-800">ขายสินค้า</h1>
+            </div>
+            <div className='p-5'>
+                <SearchBar/>
+            </div>
+            <MainSale products={products} category={category}/>
+        </div>
     </div>
   )
 }
