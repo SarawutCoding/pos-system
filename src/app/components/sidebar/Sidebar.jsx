@@ -94,6 +94,10 @@ const Sidebar = () => {
           </a>
         </div>
       </div>
+
+      <div>
+        <button type="button" className='block md:hidden'></button>
+      </div>
     </>
   );
 };
