@@ -50,9 +50,6 @@ const MainSale = ({ products, category }) => {
             <ProductCard key={item._id} product={item} cartLick={setDataCart} />
           ))}
         </div>
-        <div>
-          <Cart listCart={dataCart}/>
-        </div>
       </div>
       
     </main>
