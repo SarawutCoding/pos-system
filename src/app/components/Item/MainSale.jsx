@@ -5,7 +5,6 @@ import Cart from "./Cart";
 
 const MainSale = ({ products, category }) => {
   const [achiveCategory, setAcgiveCategory] = useState("ทั้งหมด");
-  const [dataCart, setDataCart] = useState([]);
   const checkProduct = [];
   for (let i = 0; i < products.length; i++) {
     if (achiveCategory === "ทั้งหมด" || products[i].category_id?.name === achiveCategory) {
@@ -44,12 +43,10 @@ const MainSale = ({ products, category }) => {
         )}
       </ul>
       
-      <div className="flex">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5 overflow-y-auto">
-          {checkProduct?.map((item) => (
-            <ProductCard key={item._id} product={item} cartLick={setDataCart} />
-          ))}
-        </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5 overflow-y-auto">
+        {checkProduct?.map((item) => (
+          <ProductCard key={item._id} product={item} />
+        ))}
       </div>
       
     </main>

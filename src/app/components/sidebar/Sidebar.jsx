@@ -1,16 +1,15 @@
 "use client";
-import React , { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react';
 // นำเข้าไอคอนจาก lucide-react (สวยงามและใช้งานง่าย)
-import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus, Logs, CircleX } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus } from 'lucide-react';
 
 const Sidebar = () => {
   // ดึง Pathname ปัจจุบันมาเพื่อทำ Active Link Highlight
   const pathname = usePathname();
-  const [isSiteMenu, setIsSiteMenu] = useState(true);
 
   const { data:session } = useSession();
 
@@ -26,13 +25,8 @@ const Sidebar = () => {
 
   return (
     <>
-
-      {isSiteMenu ? (
       <div className="flex flex-col h-screen p-4 bg-slate-900 shadow-xl w-64 text-slate-100 border-r border-slate-700">
         {/* --- ส่วนหัว: Logo / Name --- */}
-        <div className='flex justify-end'>
-          <button type="button" className=' cursor-pointer text-red-600' onClick={() => setIsSiteMenu(false)}><CircleX/></button>
-        </div>
         <div className="flex items-center gap-3 px-3 py-4 mb-10 border-b border-slate-700">
           <div className="p-2.5 bg-green-500 rounded-xl shadow-inner">
             <Sprout className="w-8 h-8 text-white" strokeWidth={1.5}/>
@@ -99,11 +93,7 @@ const Sidebar = () => {
             Logout
           </a>
         </div>
-      </div>) : (
-        <div>
-          <button type="button" className=' cursor-pointer' onClick={() => setIsSiteMenu(true)}><Logs/></button>
-        </div>
-      )}
+      </div>
     </>
   );
 };
