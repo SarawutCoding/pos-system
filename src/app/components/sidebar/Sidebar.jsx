@@ -12,7 +12,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   const { data:session } = useSession();
-  const [isOpenMenu, setisOpenMenu] = use
+  const [isOpenMenu, setisOpenMenu] = useState(false);
 
   // กำหนดรายการเมนู เพื่อให้ง่ายต่อการจัดการและวนลูป
   const menuItems = [
@@ -97,8 +97,9 @@ const Sidebar = () => {
       </div>
 
       <div>
-        <button type="button" className='block md:hidden'><Logs/></button>
+        <button type="button" className='block md:hidden' ><Logs/></button>
       </div>
+      {isOpenMenu}
     </>
   );
 };
