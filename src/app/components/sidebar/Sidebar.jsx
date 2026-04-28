@@ -24,6 +24,14 @@ const Sidebar = () => {
     { name: 'Settings', href: '/settings', icon: Settings },
   ];
 
+  const openMenu = () => {
+    if (isOpenMenu === true) {
+      setisOpenMenu(false);
+    }else{
+      setisOpenMenu(true);
+    }
+  }
+
   return (
     <>
       <div className="flex flex-col h-screen p-4 bg-slate-900 shadow-xl w-64 text-slate-100 border-r border-slate-700 hidden md:block">
@@ -97,7 +105,7 @@ const Sidebar = () => {
       </div>
 
       <div>
-        <button type="button" className='block md:hidden' onClick={() => setisOpenMenu(true)}><Logs/></button>
+        <button type="button" className='block md:hidden' onClick={openMenu}><Logs/></button>
       </div>
       {isOpenMenu && (
         <nav className="flex-1 space-y-1 w-full">
