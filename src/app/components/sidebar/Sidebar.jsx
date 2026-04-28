@@ -97,9 +97,43 @@ const Sidebar = () => {
       </div>
 
       <div>
-        <button type="button" className='block md:hidden' ><Logs/></button>
+        <button type="button" className='block md:hidden' onClick={() => setisOpenMenu(true)}><Logs/></button>
       </div>
-      {isOpenMenu}
+      {isOpenMenu && (
+        <nav className="flex-1 space-y-1 w-full">
+          <p className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Main Menu</p>
+          
+          {menuItems.map((item) => {
+            const isActive = pathname === item.href;
+            const Icon = item.icon; // ดึง Component ไอคอนมาใช้
+            
+            return (
+              <Link key={item.name} href={item.href}>
+                <div
+                  className={`flex items-center gap-3.5 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 group
+                    ${isActive 
+                      ? 'bg-sky-500/10 text-green-400 font-semibold shadow-sm' // สไตล์เมื่อ Active
+                      : 'text-slate-300 hover:bg-slate-800 hover:text-white'    // สไตล์เมื่อ Hover
+                    }`}
+                >
+                  {/* แถบสีด้านข้างเมื่อ Active */}
+                  {isActive && (
+                    <div className="absolute left-0 h-8 w-1 bg-green-400 rounded-r-full" />
+                  )}
+
+                  {/* ไอคอน */}
+                  <Icon className={`w-5 h-5 flex-shrink-0 transition-colors 
+                    ${isActive ? 'text-green-400' : 'text-slate-500 group-hover:text-slate-300'}`} 
+                  />
+                  
+                  {/* ชื่อเมนู */}
+                  <span>{item.name}</span>
+                </div>
+              </Link>
+            );
+          })}
+        </nav>
+      )}
     </>
   );
 };
