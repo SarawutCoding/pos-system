@@ -1,17 +1,18 @@
 "use client";
-import React from 'react';
+import React , { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react';
 // นำเข้าไอคอนจาก lucide-react (สวยงามและใช้งานง่าย)
-import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus, Logs } from 'lucide-react';
 
 const Sidebar = () => {
   // ดึง Pathname ปัจจุบันมาเพื่อทำ Active Link Highlight
   const pathname = usePathname();
 
   const { data:session } = useSession();
+  const [isOpenMenu, setisOpenMenu] = use
 
   // กำหนดรายการเมนู เพื่อให้ง่ายต่อการจัดการและวนลูป
   const menuItems = [
@@ -25,7 +26,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="flex flex-col h-screen p-4 bg-slate-900 shadow-xl w-64 text-slate-100 border-r border-slate-700">
+      <div className="flex flex-col h-screen p-4 bg-slate-900 shadow-xl w-64 text-slate-100 border-r border-slate-700 hidden md:block">
         {/* --- ส่วนหัว: Logo / Name --- */}
         <div className="flex items-center gap-3 px-3 py-4 mb-10 border-b border-slate-700">
           <div className="p-2.5 bg-green-500 rounded-xl shadow-inner">
@@ -96,7 +97,7 @@ const Sidebar = () => {
       </div>
 
       <div>
-        <button type="button" className='block md:hidden'></button>
+        <button type="button" className='block md:hidden'><Logs/></button>
       </div>
     </>
   );
