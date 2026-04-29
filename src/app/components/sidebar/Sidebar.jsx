@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react';
 // นำเข้าไอคอนจาก lucide-react (สวยงามและใช้งานง่าย)
-import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus, Logs,  } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus, Logs, CircleX } from 'lucide-react';
 
 const Sidebar = () => {
   // ดึง Pathname ปัจจุบันมาเพื่อทำ Active Link Highlight
@@ -104,10 +104,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div>
-        <button type="button" className='block md:hidden' onClick={openMenu}><Logs/></button>
-      </div>
-      {isOpenMenu && (
+      {isOpenMenu ? (
         <div className="flex flex-col h-screen w-full p-4 bg-slate-900 shadow-xl w-64 text-slate-100 border-r border-slate-700">
         {/* --- ส่วนหัว: Logo / Name --- */}
           <div className="flex items-center gap-3 px-3 py-4 mb-10 border-b border-slate-700">
@@ -177,6 +174,10 @@ const Sidebar = () => {
             </a>
           </div>
       </div>
+      ) : (
+        <div>
+          <button type="button" className='block md:hidden' onClick={openMenu}><Logs/></button>
+        </div>
       )}
     </>
   );
