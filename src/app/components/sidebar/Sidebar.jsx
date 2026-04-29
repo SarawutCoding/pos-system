@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react';
 // นำเข้าไอคอนจาก lucide-react (สวยงามและใช้งานง่าย)
-import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus, Logs } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, BarChart3, Settings, LogOut, Sprout, UserPlus, Logs,  } from 'lucide-react';
 
 const Sidebar = () => {
   // ดึง Pathname ปัจจุบันมาเพื่อทำ Active Link Highlight
