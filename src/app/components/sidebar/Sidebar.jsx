@@ -105,7 +105,7 @@ const Sidebar = () => {
       </div>
 
       {isOpenMenu ? (
-        <div className="flex flex-col h-screen w-full p-4 bg-slate-900 shadow-xl w-64 text-slate-100 border-r border-slate-700">
+        <div className="flex flex-col h-screen w-full p-4 bg-slate-900 shadow-xl w-64 text-slate-100 border-r border-slate-700 block md:hidden">
         {/* --- ส่วนหัว: Logo / Name --- */}
           <div className="flex items-center gap-3 px-3 py-4 mb-10 border-b border-slate-700">
             <div className="p-2.5 bg-green-500 rounded-xl shadow-inner">
