@@ -4,8 +4,8 @@ import React, { useEffect } from 'react'
 const Cart = ({ listCart }) => {
     
   return (
-    <div className=' p'>
-        
+    <div className='absolute right-1'>
+        <h1>ddddd</h1>
     </div>
   )
 }
