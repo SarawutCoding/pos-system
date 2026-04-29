@@ -23,7 +23,7 @@ export default function Home() {
     return null; 
   }
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* 1. ฝั่งซ้าย: Sidebar (ความกว้างคงที่) */}
       <Sidebar />
 
