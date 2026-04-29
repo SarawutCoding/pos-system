@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 const Cart = ({ listCart }) => {
     
   return (
-    <div>
+    <div className=' p'>
         
     </div>
   )
