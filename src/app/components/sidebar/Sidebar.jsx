@@ -115,6 +115,9 @@ const Sidebar = () => {
               <h1 className="text-xl font-bold tracking-tight text-white">POS <span className="text-green-400">System</span></h1>
               <p className="text-sm text-slate-400">Manage with ease</p>
             </div>
+            <div className='absolute top-2 right-2 p-1 block md:hidden hover:bg-slate-800 rounded-full transition-colors'>
+              <button type="button" className='block md:hidden' onClick={openMenu}><CircleX className=' text-red-600'/></button>
+            </div>
           </div>
 
           {/* --- ส่วนกลาง: รายการเมนู --- */}
