@@ -28,7 +28,7 @@ export default function Home() {
       <Sidebar />
 
       {/* 2. ฝั่งขวา: พื้นที่ส่วนที่เหลือทั้งหมด */}
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 overflow-hidden" >
         {/* Main Content: พื้นที่แสดงเนื้อหาหน้าเว็บ */}
         <main className="flex-1 overflow-y-auto p-6 bg-slate-50">
           <div>
