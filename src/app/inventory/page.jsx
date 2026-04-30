@@ -132,7 +132,7 @@ const InventoryPage = () => {
                 </tbody>
               </table>
             </div>
-
+                  
           </div>
         </main>
         
