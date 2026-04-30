@@ -12,7 +12,7 @@ const MainSale = ({ products, category }) => {
     }
   }
   return (
-    <main>
+    <main >
       <ul className="flex flex-wrap items-center gap-3 p-4">
         <li
           className={`cursor-pointer px-5 py-2 rounded-full border-2 transition-all ${
@@ -43,7 +43,7 @@ const MainSale = ({ products, category }) => {
         )}
       </ul>
       
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-2 gap-4 p-5 overflow-y-auto w-3/4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-2 gap-4 p-5 h-screen w-3/4">
         {checkProduct?.map((item) => (
           <ProductCard key={item._id} product={item} />
         ))}
