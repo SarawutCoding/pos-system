@@ -21,7 +21,7 @@ const itemsPage = async () => {
     <div className="flex h-screen bg-gray-50 overflow-hidden">
         <Sidebar />
 
-        <div className="flex flex-col flex-1 overflow-hidden" >
+        <div className="flex flex-col flex-1 overflow-y-auto" >
             <div className='p-6'>
                 <h1 className="text-3xl font-bold text-gray-800">ขายสินค้า</h1>
             </div>
