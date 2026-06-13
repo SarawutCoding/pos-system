@@ -7,7 +7,7 @@ const Cart = ({ listCart }) => {
       {/* 1. Header: หัวข้อตะกร้า */}
       <div className="p-4 bg-white border-b border-slate-100 flex justify-between items-center">
         <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-          Current Order
+          ตะกร้า
         </h2>
         <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded-full">
           สินค้า
