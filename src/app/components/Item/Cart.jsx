@@ -10,7 +10,7 @@ const Cart = ({ listCart }) => {
           Current Order
         </h2>
         <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded-full">
-          Items
+          สินค้า
         </span>
       </div>
 
